@@ -34,7 +34,7 @@ function getServerSnapshot() {
 
 export default function Page() {
   const [windowDimensions, setWindowDimensions] = useState(getSnapshot());
-  const [users, setUsers] = useState<any>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [ready, setReady] = useState(false);
   useEffect(() => {
     setReady(true);
@@ -84,8 +84,11 @@ export default function Page() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user: any) => (
-              <tr className="border-b-2 border-gray-100 text-gray-400">
+            {users.map((user) => (
+              <tr
+                className="border-b-2 border-gray-100 text-gray-400"
+                key={user.id}
+              >
                 <td className="py-2">{user.number}</td>
                 <td className="py-2">{user.displayName}</td>
                 <td className="py-2">{user.id}</td>
