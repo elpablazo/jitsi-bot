@@ -1,5 +1,3 @@
-"use client";
-
 import { useMeetingStore } from "@/stores/meeting";
 import router from "next/router";
 import { JitsiMeeting } from "@jitsi/react-sdk";
@@ -49,30 +47,32 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-8">
       <div className="w-full min-h-screen">
-        <JitsiMeeting
-          roomName={"CDMX_Migala"}
-          getIFrameRef={(node) => {
-            if (node) {
-              node.style.height = `${windowDimensions.height - 20}px`;
-              node.style.width = `${windowDimensions.width - 20}px`;
-            }
-          }}
-          onApiReady={(api) => {
-            api.executeCommand("displayName", nombre);
+        {ready && (
+          <JitsiMeeting
+            roomName={"CDMX_Migala"}
+            getIFrameRef={(node) => {
+              if (node) {
+                node.style.height = `${windowDimensions.height - 20}px`;
+                node.style.width = `${windowDimensions.width - 20}px`;
+              }
+            }}
+            onApiReady={(api) => {
+              api.executeCommand("displayName", nombre);
 
-            api.addListener("participantJoined", (data: any) => {
-              // We check if the user is the secretary
-              setUsers([
-                ...users,
-                {
-                  number: users.length + 1,
-                  id: data.id,
-                  displayName: data.displayName,
-                },
-              ]);
-            });
-          }}
-        />
+              api.addListener("participantJoined", (data: any) => {
+                // We check if the user is the secretary
+                setUsers([
+                  ...users,
+                  {
+                    number: users.length + 1,
+                    id: data.id,
+                    displayName: data.displayName,
+                  },
+                ]);
+              });
+            }}
+          />
+        )}
       </div>
       <div className="flex flex-col w-full min-h-screen px-16">
         <table className="table-fixed text-center">
