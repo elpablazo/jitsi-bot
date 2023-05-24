@@ -87,22 +87,22 @@ export default function Page() {
   );
 }
 
-// Get serversideprops
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  // Obtenemos la sessión del usuario
-  const session = await getServerSession(req, res, authOptions);
+// // Get serversideprops
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+//   // Obtenemos la sessión del usuario
+//   const session = await getServerSession(req, res, authOptions);
 
-  // Si no hay sesión, redirigimos al usuario a la página de inicio de sesión
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+//   // Si no hay sesión, redirigimos al usuario a la página de inicio de sesión
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: "/",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: { session },
-  };
-};
+//   return {
+//     props: { session },
+//   };
+// };
