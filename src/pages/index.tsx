@@ -14,7 +14,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 items-center">
           <p className="font-bold">Bienvenidx!</p>
           <p className="font-semibold">Estás entrando como:</p>
-          <img
+          <Image
             src={session.user?.image || ""}
             alt="Profile pic"
             className="w-12 rounded-full self-center"
@@ -44,7 +44,7 @@ export default function Home() {
         onClick={() => signIn("google")}
         className="flex px-4 py-2 bg-gray-200 rounded font-semibold gap-4 items-center text-neutral-700 hover:bg-gray-300 transition-all"
       >
-        <img src="google_logo.png" alt="" className="w-4 h-4" />
+        <Image src="google_logo.png" alt="" className="w-4 h-4" />
         Inicia sesión con la cuenta de la comisión
       </button>
     </div>
